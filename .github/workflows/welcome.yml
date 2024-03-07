@@ -1,0 +1,19 @@
+# Workflow name
+name: Post welcome comment
+on:
+# Trigger event
+  pull_request:
+    types: [opened]
+permissions:
+# Assign permissions to workflow runner
+  pull-requests: write
+jobs:
+  build:
+    name: Post welcome comment
+    runs-on: ubuntu-latest
+    steps:
+      # Comment on the pull request
+      - run: gh pr comment $PR_URL --body "Welcome to the repository!"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_URL: ${{ github.event.pull_request.html_url }}
