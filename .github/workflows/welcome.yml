@@ -1,8 +1,11 @@
+# Workflow name
 name: Post welcome comment
 on:
+# Trigger event
   pull_request:
     types: [opened]
 permissions:
+# Assign permissions to workflow runner
   pull-requests: write
 jobs:
   build:
